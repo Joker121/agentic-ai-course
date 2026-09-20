@@ -1,0 +1,37 @@
+{
+  "$schema": "https://cdn.railway.app/railway.schema.json",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "uvicorn main:app --host 0.0.0.0 --port $PORT",
+    "healthcheckPath": "/health",
+    "port": 8000
+  },
+  "services": {
+    "postgres": {
+      "plugin": "postgresql",
+      "plan": "development"
+    },
+    "redis": {
+      "plugin": "redis",
+      "plan": "development"
+    }
+  },
+  "environments": {
+    "staging": {
+      "services": {
+        "orchestrator": { "port": 8000 },
+        "researcher-a2a": { "port": 8001 },
+        "writer-a2a": { "port": 8002 }
+      }
+    },
+    "production": {
+      "services": {
+        "orchestrator": { "port": 8000, "replicas": 2 },
+        "researcher-a2a": { "port": 8001 },
+        "writer-a2a": { "port": 8002 }
+      }
+    }
+  }
+}

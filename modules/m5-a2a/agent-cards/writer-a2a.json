@@ -1,0 +1,39 @@
+{
+  "name": "writer-a2a",
+  "version": "1.0.0",
+  "description": "Writes polished articles from research findings with proper citations",
+  "endpoint": "http://writer-a2a:8002/a2a",
+  "capabilities": [
+    "content-generation",
+    "style-adaptation",
+    "citation-formatting",
+    "tone-modulation"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "content": {"type": "string"},
+      "sources": {"type": "array", "items": {"type": "string"}},
+      "tone": {"type": "string", "enum": ["professional", "casual", "academic", "persuasive"]},
+      "target_audience": {"type": "string"},
+      "format": {"type": "string", "enum": ["article", "report", "summary", "blog-post"]}
+    },
+    "required": ["content"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "article": {"type": "string"},
+      "word_count": {"type": "integer"},
+      "citations_formatted": {"type": "boolean"},
+      "reading_time_minutes": {"type": "number"}
+    }
+  },
+  "authentication": {
+    "type": "api_key",
+    "header": "X-A2A-Token",
+    "token_type": "bearer"
+  },
+  "owner": "agentic-ai-course",
+  "created_at": "2025-01-15T10:00:00Z"
+}

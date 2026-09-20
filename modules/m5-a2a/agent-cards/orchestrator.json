@@ -1,0 +1,36 @@
+{
+  "name": "orchestrator",
+  "version": "1.0.0",
+  "description": "Dispatches research and writing tasks to specialized A2A agents",
+  "endpoint": "http://orchestrator:8000/a2a",
+  "capabilities": [
+    "task-routing",
+    "load-balancing",
+    "result-aggregation",
+    "circuit-breaker"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "question": {"type": "string"},
+      "task_type": {"type": "string", "enum": ["research", "writing", "analysis"]},
+      "priority": {"type": "string", "enum": ["low", "normal", "high", "urgent"]}
+    },
+    "required": ["question", "task_type"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "status": {"type": "string"},
+      "result": {"type": "object"},
+      "processing_time_ms": {"type": "integer"}
+    }
+  },
+  "authentication": {
+    "type": "api_key",
+    "header": "X-A2A-Token",
+    "token_type": "bearer"
+  },
+  "owner": "agentic-ai-course",
+  "created_at": "2025-01-15T10:00:00Z"
+}
