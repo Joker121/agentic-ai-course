@@ -12,12 +12,11 @@ pydantic-settings>=2.3.0
 
 # RAG / Vector
 chromadb>=0.5.0
-sentence-transformers>=2.5.1
 
 # Database
 asyncpg>=0.29.0
 sqlalchemy>=2.0.0
-pgvector[sqlalchemy]>=0.3.0
+pgvector>=0.3.0
 
 # Cache / Queue
 redis>=5.0.0
@@ -35,20 +34,16 @@ typer>=0.9.0
 # Testing
 pytest>=7.4.0
 pytest-asyncio>=0.23.0
-httpx>=0.27.0
 
 # Code quality
 black>=24.4.0
 ruff>=0.4.0
 mypy>=1.9.0
 
-# Agent frameworks
-langgraph>=0.2.0
+# LangChain (for framework comparison)
 langchain-core>=0.2.0
-claude-agent-sdk>=0.1.0
 
 # A2A Protocol
-aiohttp>=3.9.0
 jsonschema>=4.21.0
 
 # Other utilities
@@ -56,3 +51,7 @@ python-dotenv>=1.0.0
 requests>=2.32.0
 PyYAML>=6.0.1
 python-multipart>=0.0.9
+
+# Optional: LangGraph (requires Python 3.11+)
+# langgraph>=0.2.0
+# claude-agent-sdk (install via: npm install -g @anthropic-ai/claude-agent-sdk)
