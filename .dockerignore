@@ -2,7 +2,11 @@
 .venv
 __pycache__
 *.pyc
-tests/
 .env
 .env.*
 railway.json
+tests/
+fde/
+scripts/
+env/
+node_modules/
